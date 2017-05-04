@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Hello, {{ first_name }}!</h1>
+    {% if messages %}
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+    {% endif %}
+    <h3>Here is the list of your friends:</h3>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        {% for freind in friends %}
+        <tr>
+          <td>{{ first_name }}</td>
+          <a href="myFreinds/user">View Profile</a>
+          <!-- <td><a href="myFriends/remove{{ user.id }}">Remove as Friend</a></td> -->
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h3>Other Users not on your friends list:</h3>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.name }}</td>
+          <td><a href="myFriends/remove{{ user.id }}">Remove as Friend</a></td>
+          <td><a href="myFriends/user/{{ user.id }}">View Profile</a></td>
+          <td><input type="submit" name="add" value="Add as Friend"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/logout">Logout</a>
+  </div>
+</body>
+</html>
